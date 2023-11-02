@@ -13,17 +13,16 @@
 //     console.log(`Server running at http://${hostname}:${port}/`);
 // })
 
-// get the client
-const mysql = require('mysql2')
 
 // config dotenv để có thể sử dụng được các biến môi trường
 require('dotenv').config();
+
 const configViewEngine = require('./config/viewEngine')
 const express = require('express');
-const router = require('./routes/web')
-
+const webRoutes = require('./routes/web')
+const connection = require('./config/database')
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 8888;
 const hostname = process.env.HOST_NAME;
 
 // config template engine
@@ -31,21 +30,11 @@ const hostname = process.env.HOST_NAME;
 configViewEngine(app);
 
 // khai bao routes
-app.use('/', router)
+app.use('/', webRoutes)
 
 
 // D:\File\Code\NodeJS Express\H-c-NodeJS\src
 console.log(__dirname);
-
-// test connection
-
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    port: 3307, // default 3306,
-    password: '123456', //default empty
-    database: 'hoidanit'
-});
 
 // simple query
 connection.query(
