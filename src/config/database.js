@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 // get the client
-const mysql = require('mysql2')
+const mysql = require('mysql2/promise')
 
 const connection = mysql.createPool({
     host: process.env.DB_HOST,
