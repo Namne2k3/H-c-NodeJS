@@ -23,7 +23,12 @@ const getAnhVA = (req, res) => {
     res.render('sample')
 }
 
+const createUser = (req, res) => {
+    res.send(JSON.stringify(req.body))
+}
+
 module.exports = {
     getHomePage,
-    getAnhVA
+    getAnhVA,
+    createUser
 }
