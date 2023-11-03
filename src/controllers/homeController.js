@@ -17,14 +17,27 @@ const getHomePage = (req, res) => {
 }
 
 const getAnhVA = (req, res) => {
-    // process data
-    // call models
 
-    res.render('sample')
 }
 
 const createUser = (req, res) => {
-    res.send(JSON.stringify(req.body))
+    // process data
+    // call models
+
+    let { email, myname, city } = req.body;
+
+    connection.query(
+        `INSERT INTO Users (email, name, city)
+         VALUES (?, ?, ?)`,
+        [email, myname, city],
+        (err, results) => {
+            if (err)
+                console.log(err);
+
+            console.log(results);
+            res.send("Created user succeed!")
+        }
+    );
 }
 
 module.exports = {

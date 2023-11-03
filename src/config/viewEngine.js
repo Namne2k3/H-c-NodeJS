@@ -9,6 +9,7 @@ const configViewEngine = (app) => {
     // config app bodies
     app.use(express.json()); // Used to parse JSON bodies
     app.use(express.urlencoded({ extended: true })) // Parse URL encoded bodies
+
     app.use(express.static(path.join('./src', 'public')));
 }
 
