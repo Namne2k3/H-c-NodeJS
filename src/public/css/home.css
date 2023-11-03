@@ -32,3 +32,20 @@
     background-color: #04AA6D;
     color: white;
 }
+
+.form_add {
+    width: 500px;
+    margin: 0 auto;
+    padding-top: 2rem;
+}
+
+.input_group {
+    padding: 1rem;
+}
+
+.form_btn button {
+    margin: 1rem;
+    padding: 0.5rem 2rem;
+    cursor: pointer;
+    border-radius: 4px;
+}
