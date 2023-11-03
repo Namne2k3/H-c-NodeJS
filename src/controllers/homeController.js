@@ -10,9 +10,10 @@ const getHomePage = (req, res) => {
         (err, results, fields) => {
             users = results;
 
-            res.send(JSON.stringify(users));
+            console.log(JSON.stringify(users));
         }
     )
+    return res.render('home')
 }
 
 const getAnhVA = (req, res) => {
