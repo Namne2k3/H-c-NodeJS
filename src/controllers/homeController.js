@@ -1,5 +1,5 @@
 const connection = require('../config/database')
-const { getAllUser } = require('../services/crudService')
+const { getAllUser, createNewUser } = require('../services/crudService')
 let users = [];
 
 const getHomePage = async (req, res) => {
@@ -43,9 +43,7 @@ const createUser = async (req, res) => {
     //     }
     // );
 
-    let [results, fields] = await connection.query(
-        `INSERT INTO Users (email, name, city) VALUES (?, ?, ?)`, [email, myname, city]
-    );
+    let results = await createNewUser(req.body);
 
     console.log("Check Results >>> ", results);
 
