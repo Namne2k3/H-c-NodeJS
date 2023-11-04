@@ -7,6 +7,6 @@ const { getHomePage, getCreatePage, createUser, getUpdatePage } = require('../co
 router.get('/', getHomePage);
 router.get('/create', getCreatePage);
 router.post('/create-user', createUser);
-router.get('/update', getUpdatePage)
+router.get('/update/:userId', getUpdatePage)
 
 module.exports = router;

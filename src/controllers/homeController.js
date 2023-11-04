@@ -25,6 +25,7 @@ const getCreatePage = (req, res) => {
 }
 
 const getUpdatePage = (req, res) => {
+    console.log("Check req.params >>> ", JSON.stringify(req.params));
     res.render('update');
 }
 
