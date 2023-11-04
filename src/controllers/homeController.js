@@ -24,6 +24,10 @@ const getCreatePage = (req, res) => {
     res.render('create');
 }
 
+const getUpdatePage = (req, res) => {
+    res.render('update');
+}
+
 const createUser = async (req, res) => {
     // process data
     // call models
@@ -53,5 +57,6 @@ const createUser = async (req, res) => {
 module.exports = {
     getHomePage,
     getCreatePage,
-    createUser
+    createUser,
+    getUpdatePage
 }
