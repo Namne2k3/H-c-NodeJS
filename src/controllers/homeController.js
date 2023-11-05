@@ -37,11 +37,11 @@ const postUpdateUser = async (req, res) => {
 
     let result = await updateUser(req.body);
 
-    console.log("Check postUpdatUser >>> ", result);
+    console.log("Check postUpdateUser >>> ", result);
 
     let allUsers = await getAllUser();
 
-    return res.render('home', { listUsers: allUsers })
+    res.redirect('/');
 }
 
 const postCreateUser = async (req, res) => {
