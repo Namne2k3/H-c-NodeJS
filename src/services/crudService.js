@@ -5,6 +5,14 @@ const getAllUser = async () => {
     return results;
 }
 
+const deleteUser = async (id) => {
+    const [results, fields] = await connection.query(
+        `DELETE FROM Users WHERE id = ?`, [id]
+    );
+
+    return results;
+}
+
 const createNewUser = async ({ email, myname, city }) => {
     const [results, fields] = await connection.query(
         `INSERT INTO Users (email, name, city) VALUES (?, ?, ?)`, [email, myname, city]
@@ -32,5 +40,6 @@ module.exports = {
     getAllUser,
     createNewUser,
     getUser,
-    updateUser
+    updateUser,
+    deleteUser
 }

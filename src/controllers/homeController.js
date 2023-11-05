@@ -1,8 +1,10 @@
 const connection = require('../config/database')
-const { getAllUser, createNewUser, getUser, updateUser } = require('../services/crudService')
+const { getAllUser, createNewUser, getUser, updateUser, deleteUser } = require('../services/crudService')
 
-const postHandleRemoveUser = (req, res) => {
-    res.send("OK Deleted");
+const postHandleRemoveUser = async (req, res) => {
+    const id = req.body.userId;
+    await deleteUser(id);
+    res.redirect('/');
 }
 
 const postDeleteUser = async (req, res) => {
@@ -46,8 +48,6 @@ const postUpdateUser = async (req, res) => {
     let result = await updateUser(req.body);
 
     console.log("Check postUpdateUser >>> ", result);
-
-    let allUsers = await getAllUser();
 
     res.redirect('/');
 }
