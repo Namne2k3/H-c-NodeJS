@@ -1,5 +1,5 @@
 const connection = require('../config/database')
-const { getAllUser, createNewUser } = require('../services/crudService')
+const { getAllUser, createNewUser, getUser, updateUser } = require('../services/crudService')
 let users = [];
 
 const getHomePage = async (req, res) => {
@@ -24,12 +24,27 @@ const getCreatePage = (req, res) => {
     res.render('create');
 }
 
-const getUpdatePage = (req, res) => {
+const getUpdatePage = async (req, res) => {
     console.log("Check req.params >>> ", JSON.stringify(req.params));
-    res.render('update');
+
+    let user = await getUser(req.params.userId);
+
+    res.render('update', { user: user });
 }
 
-const createUser = async (req, res) => {
+const postUpdateUser = async (req, res) => {
+    let { email, myname, city, userId } = req.body;
+
+    let result = await updateUser(req.body);
+
+    console.log("Check postUpdatUser >>> ", result);
+
+    let allUsers = await getAllUser();
+
+    return res.render('home', { listUsers: allUsers })
+}
+
+const postCreateUser = async (req, res) => {
     // process data
     // call models
 
@@ -50,7 +65,7 @@ const createUser = async (req, res) => {
 
     let results = await createNewUser(req.body);
 
-    console.log("Check Results >>> ", results);
+    console.log("Check createNewUser >>> ", results);
 
     res.send("Created User succeed!");
 }
@@ -58,6 +73,7 @@ const createUser = async (req, res) => {
 module.exports = {
     getHomePage,
     getCreatePage,
-    createUser,
-    getUpdatePage
+    postCreateUser,
+    getUpdatePage,
+    postUpdateUser
 }
