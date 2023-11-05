@@ -1,6 +1,14 @@
 const connection = require('../config/database')
 const { getAllUser, createNewUser, getUser, updateUser } = require('../services/crudService')
-let users = [];
+
+const postHandleRemoveUser = (req, res) => {
+    res.send("OK Deleted");
+}
+
+const postDeleteUser = async (req, res) => {
+    let user = await getUser(req.params.userId);
+    res.render('delete', { user: user })
+}
 
 const getHomePage = async (req, res) => {
     // process data
@@ -75,5 +83,7 @@ module.exports = {
     getCreatePage,
     postCreateUser,
     getUpdatePage,
-    postUpdateUser
+    postUpdateUser,
+    postDeleteUser,
+    postHandleRemoveUser
 }

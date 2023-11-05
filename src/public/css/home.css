@@ -76,9 +76,14 @@ tr:hover {
     margin-bottom: 1rem;
 }
 
+.btn_delete,
 .btn_edit {
     color: inherit;
     text-decoration: none;
+}
+
+.inline-block {
+    display: inline-block;
 }
 
 .hidden {

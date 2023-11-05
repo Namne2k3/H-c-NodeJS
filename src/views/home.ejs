@@ -42,7 +42,11 @@
                         <button>
                             <a class="btn_edit" href="/update/<%- user.id -%>">Edit</a>
                         </button>
-                        <button>Delete</button>
+                        <form class="inline-block" action="/delete-user/<%- user.id -%>" method="POST">
+                            <button class="btn_delete">
+                                Delete
+                            </button>
+                        </form>
                     </td>
                 </tr>
                 <% }); %>
